@@ -6,6 +6,7 @@
 
 * Interfaces:
   - `TextReader` now extends `io.Reader`, for better compatibility with the wider Golang io ecosystem.
+  - `TextWriter` now extends `io.Writer`, for better compatibility with the wider Golang io ecosystem.
 
 ## v2.0.1
 

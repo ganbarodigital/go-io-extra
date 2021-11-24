@@ -44,6 +44,10 @@ import (
 // It was originally designed to represent a UNIX process's stdout or
 // stderr.
 type TextWriter interface {
+	// io.Writer support gives us compatibility with the wider
+	// Golang io ecosystem
+	io.Writer
+
 	io.StringWriter
 	RuneWriter
 }
