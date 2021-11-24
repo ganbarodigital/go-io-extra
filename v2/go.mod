@@ -1,4 +1,4 @@
-module github.com/ganbarodigital/go-ioextra
+module github.com/ganbarodigital/go-ioextra/v2
 
 go 1.17
 
