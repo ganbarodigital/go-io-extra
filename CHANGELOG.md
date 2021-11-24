@@ -2,6 +2,11 @@
 
 ## develop
 
+### New
+
+* Interfaces:
+  - `TextReader` now extends `io.Reader`, for better compatibility with the wider Golang io ecosystem.
+
 ## v2.0.1
 
 Released Wednesday, 24th November 2021.

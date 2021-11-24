@@ -34,11 +34,17 @@
 
 package ioextra
 
+import "io"
+
 // TextReader represents an input source that provides blocks of text
 // for us to work with.
 //
 // It was originally designed to represent a UNIX process's stdin.
 type TextReader interface {
+	// io.Reader support gives us compatibility with the wider
+	// Golang io ecosystem
+	io.Reader
+
 	// ParseInt returns the data in this input source as an integer.
 	//
 	// If the input source contains anything other than a valid number, an
