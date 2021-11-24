@@ -38,7 +38,8 @@ import (
 	"io"
 )
 
-// DevNull emulates /dev/null, with full TextReader / TextWriter support.
+// DevNull emulates UNIX /dev/null behaviour, with full support as
+// io.Reader, io.Closer and io.Writer.
 type DevNull struct {
 	flags int
 }
@@ -49,14 +50,19 @@ type DevNull struct {
 //
 // ----------------------------------------------------------------
 
-// NewDevNull creates an emulation of /dev/null that also supports
-// the TextReader / TextWriter interfaces.
+// NewDevNull creates an emulation of /dev/null.
 func NewDevNull() *DevNull {
 	retval := DevNull{flags: 0}
 
 	// all done
 	return &retval
 }
+
+// ================================================================
+//
+// io.Reader interface
+//
+// ----------------------------------------------------------------
 
 // Read emulates /dev/null: it returns zero bytes.
 func (d *DevNull) Read(b []byte) (int, error) {
@@ -67,11 +73,23 @@ func (d *DevNull) Read(b []byte) (int, error) {
 	return 0, io.ErrClosedPipe
 }
 
+// ================================================================
+//
+// io.Closer interface
+//
+// ----------------------------------------------------------------
+
 // Close prevents all further reads and writes.
 func (d *DevNull) Close() error {
 	d.flags |= closed
 	return nil
 }
+
+// ================================================================
+//
+// io.Writer interface
+//
+// ----------------------------------------------------------------
 
 // Write emulates /dev/null: all writes succeed (as long as you haven't
 // called Close) but do nothing.
