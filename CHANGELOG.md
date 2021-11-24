@@ -5,6 +5,7 @@
 ### New
 
 * Added `DevNull`
+* Added `DevZero`
 * added `closed` flag
 
 ## v2.1.1
