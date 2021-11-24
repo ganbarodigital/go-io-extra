@@ -6,3 +6,4 @@
 
 * Added `TextInput`
 * Added `TextOutput`
+* Added `TextInputOutput`
