@@ -19,6 +19,7 @@ Interface          | Purpose
 
 Struct       | Purpose
 -------------|--------
+`DevNull`    | An io.ReadWriteCloser that emulates UNIX /dev/null behaviour.
 `TextBuffer` | A bytes.Buffer with full `TextReader` and `TextWriter` support.
 `TextFile`   | An os.File with full `TextReader` and `TextWriter` support.
 

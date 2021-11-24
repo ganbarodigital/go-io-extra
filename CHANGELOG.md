@@ -2,6 +2,11 @@
 
 ## develop
 
+### New
+
+* Added `DevNull`
+* added `closed` flag
+
 ## v2.1.1
 
 Released Wednesday, 24th November 2021.
