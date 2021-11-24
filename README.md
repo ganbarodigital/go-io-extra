@@ -27,7 +27,7 @@ We hope you find them useful too.
 To start using _ioextra_, install Go v1.17 or above. Then, import _ioextra_ into your Golang code:
 
 ```sh
-import ioextra "github.com/ganbarodigital/go-ioextra/v3"
+import ioextra "github.com/ganbarodigital/go-ioextra"
 ```
 
 This will retrieve the library.
