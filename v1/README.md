@@ -17,9 +17,10 @@ Interface          | Purpose
 
 ###
 
-Struct     | Purpose
------------|--------
-`TextFile` | An os.File with full `TextReader` and `TextWriter` support.
+Struct       | Purpose
+-------------|--------
+`TextBuffer` | A bytes.Buffer with full `TextReader` and `TextWriter` support.
+`TextFile`   | An os.File with full `TextReader` and `TextWriter` support.
 
 ### Utilities
 
