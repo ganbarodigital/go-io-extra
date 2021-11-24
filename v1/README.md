@@ -8,11 +8,11 @@ _ioextra_ is a library that adds helpful Golang io interfaces, structs and utili
 
 ### Interfaces
 
-Interface         | Purpose
-------------------|---------
-`TextInput`       | Represents a text-oriented input source, such as stdin.
-`TextOutput`      | Represents a text-oriented output source, such as stdout / stderr.
-`TextInputOutput` | Represents a text-oriented input & output source.
+Interface          | Purpose
+-------------------|---------
+`TextReader`       | Represents a text-oriented input source, such as stdin.
+`TextWriter`       | Represents a text-oriented output source, such as stdout / stderr.
+`TextReaderWriter` | Represents a text-oriented input & output source.
 
 ### Utilities
 

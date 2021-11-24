@@ -38,14 +38,12 @@ import (
 	"io"
 )
 
-// TextOutput represents an output destination that accepts blocks of
+// TextWriter represents an output destination that accepts blocks of
 // text.
 //
 // It was originally designed to represent a UNIX process's stdout or
 // stderr.
-type TextOutput interface {
-	io.Writer
-	io.ByteWriter
+type TextWriter interface {
 	io.StringWriter
 
 	// WriteRune writes a single rune (a unicode character) to the output

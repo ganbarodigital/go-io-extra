@@ -34,12 +34,12 @@
 
 package ioextra
 
-// TextInputOutput represents something that can act both as an input source
-// and as an output destination.
+// TextReaderWriter represents something that can act both as a text-oriented
+// input source and output destination.
 //
 // It was originally designed to represent a UNIX process's stdout / stderr
 // that is then piped into the next process.
-type TextInputOutput interface {
-	TextInput
-	TextOutput
+type TextReaderWriter interface {
+	TextReader
+	TextWriter
 }

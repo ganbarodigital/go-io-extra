@@ -34,21 +34,11 @@
 
 package ioextra
 
-import (
-	"io"
-)
-
-// TextInput represents an input source that provides blocks of text
+// TextReader represents an input source that provides blocks of text
 // for us to work with.
 //
 // It was originally designed to represent a UNIX process's stdin.
-type TextInput interface {
-	// Reader gives us great compatibility with the wider Golang ecosystem.
-	io.Reader
-
-	// Close tells the input source that we're done reading from it.
-	io.Closer
-
+type TextReader interface {
 	// ParseInt returns the data in this input source as an integer.
 	//
 	// If the input source contains anything other than a valid number, an
@@ -56,19 +46,19 @@ type TextInput interface {
 	ParseInt() (int, error)
 
 	// ReadLines returns a channel that you can `range` over to get each
-	// line from this input source
+	// line from this input source.
 	ReadLines() <-chan string
 
 	// ReadWords returns a channel that you can `range` over to get each
-	// word from this input source
+	// word from this input source.
 	ReadWords() <-chan string
 
 	// String returns all of the data in this input source as a single
-	// (possibly multi-line) string
+	// (possibly multi-line) string.
 	String() string
 
 	// Strings returns all of the data in this input source as an array of
-	// strings, one line per array entry
+	// strings, one line per array entry.
 	Strings() []string
 
 	// String returns all of the data in this input source as a single
