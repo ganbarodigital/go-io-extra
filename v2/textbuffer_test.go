@@ -288,6 +288,32 @@ func TestTextBufferStringReturnsBuffer(t *testing.T) {
 	assert.Equal(t, expectedOutput, actualOutput)
 }
 
+func TestTextBufferStringEmptiesTheBuffer(t *testing.T) {
+	t.Parallel()
+
+	// ----------------------------------------------------------------
+	// setup your test
+
+	testData := "hello world\n"
+
+	unit := NewTextBuffer()
+	unit.WriteString(testData)
+
+	expectedOutput := testData
+
+	// ----------------------------------------------------------------
+	// perform the change
+
+	actualOutput := unit.String()
+	secondOutput := unit.String()
+
+	// ----------------------------------------------------------------
+	// test the results
+
+	assert.Equal(t, expectedOutput, actualOutput)
+	assert.Empty(t, secondOutput)
+}
+
 func TestTextBufferStringsReturnsBuffer(t *testing.T) {
 	t.Parallel()
 

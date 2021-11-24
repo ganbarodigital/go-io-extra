@@ -2,6 +2,11 @@
 
 ## develop
 
+### Fixes
+
+* TextBuffer
+  - TextBuffer.String() now returns only the remaining data (ie, non-read data)
+
 ## v2.1.0
 
 Released Wednesday, 24th November 2021.

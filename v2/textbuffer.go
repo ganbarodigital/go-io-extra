@@ -37,6 +37,7 @@ package ioextra
 import (
 	"bufio"
 	"bytes"
+	"io/ioutil"
 	"strconv"
 	"strings"
 )
@@ -86,6 +87,12 @@ func (d *TextBuffer) ReadLines() <-chan string {
 // word from our buffer
 func (d *TextBuffer) ReadWords() <-chan string {
 	return NewTextScanner(d, bufio.ScanWords)
+}
+
+// String returns all the remaining data in our buffer as a single string.
+func (d *TextBuffer) String() string {
+	data, _ := ioutil.ReadAll(d)
+	return string(data)
 }
 
 // Strings returns all of the data in our buffer as an array of
