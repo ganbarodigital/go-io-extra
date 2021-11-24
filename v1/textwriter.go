@@ -45,9 +45,5 @@ import (
 // stderr.
 type TextWriter interface {
 	io.StringWriter
-
-	// WriteRune writes a single rune (a unicode character) to the output
-	// destination. It returns the number of types written, and any error
-	// encountered that caused the write to fail.
-	WriteRune(r rune) (n int, err error)
+	RuneWriter
 }
