@@ -67,7 +67,7 @@ func NewDevNull() *DevNull {
 // Read emulates /dev/null: it returns zero bytes.
 func (d *DevNull) Read(b []byte) (int, error) {
 	if d.flags&closed == 0 {
-		return 0, nil
+		return 0, io.EOF
 	}
 
 	return 0, io.ErrClosedPipe

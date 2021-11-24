@@ -140,7 +140,7 @@ func TestDevNullImplementsIOCloser(t *testing.T) {
 //
 // ----------------------------------------------------------------
 
-func TestDevNullReadReturnsNoData(t *testing.T) {
+func TestDevNullReadReturnsEOF(t *testing.T) {
 	t.Parallel()
 
 	// ----------------------------------------------------------------
@@ -165,7 +165,7 @@ func TestDevNullReadReturnsNoData(t *testing.T) {
 	// ----------------------------------------------------------------
 	// test the results
 
-	assert.Nil(t, err)
+	assert.Equal(t, io.EOF, err)
 	assert.Zero(t, actualLen)
 	assert.Equal(t, expectedOutput, actualOutput)
 }
