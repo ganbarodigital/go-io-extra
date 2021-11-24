@@ -94,64 +94,30 @@ func (d *TextFile) MustRewind() error {
 //
 // ---------------------------------------------------------------------------
 
-// ParseInt returns the data in our underlying file as an integer.
+// ParseInt returns the remaining data in our underlying file as an integer.
 //
 // If the file contains anything other than a valid number, an error
 // is returned.
 func (d *TextFile) ParseInt() (int, error) {
-	// make sure we are at the start of the file
-	err := d.Rewind()
-	if err != nil {
-		return 0, err
-	}
-
 	text := d.TrimmedString()
 	return strconv.Atoi(text)
 }
 
 // ReadLines returns a channel that you can `range` over to get each
-// line from our underlying file.
-//
-// If the underlying file supports it, ReadLines will always return
-// a channel that starts from the beginning of the file.
+// remaining line from our underlying file.
 func (d *TextFile) ReadLines() <-chan string {
-	// make sure we are at the start of the file
-	d.Rewind()
-
 	return NewTextScanner(d, bufio.ScanLines)
 }
 
 // ReadWords returns a channel that you can `range` over to get each
-// word from our underlying file.
-//
-// If the underlying file supports it, ReadWords will always return
-// a channel that starts from the beginning of the file.
+// remaining word from our underlying file.
 func (d *TextFile) ReadWords() <-chan string {
-	// make sure we are at the start of the file
-	d.Rewind()
-
 	return NewTextScanner(d, bufio.ScanWords)
 }
 
-// String returns all of the data in our underlying file as a single
-// (possibly multi-line) string.
-//
-// If the underlying file does not support seeking to the beginning
-// of the data (ie, it is a stream of some kind), then we log a fatal
-// error.
+// String returns all of the remaining data in our underlying file as a
+// single (possibly multi-line) string.
 func (d *TextFile) String() string {
-	// make sure we are at the start of the file
-	rewindErr := d.MustRewind()
-
-	// because we guarantee that String() always returns all of the
-	// data in the file, we cannot continue if the Rewind operation
-	// failed for any reason
-	if rewindErr != nil {
-		// this return statement will only be reachable inside
-		// our unit tests
-		return ""
-	}
-
 	retval, err := ioutil.ReadAll(d)
 	if err != nil {
 		return ""
@@ -160,25 +126,9 @@ func (d *TextFile) String() string {
 	return string(retval)
 }
 
-// Strings returns all of the data in our underlying file as an array of
-// strings, one line per array entry.
-//
-// If the underlying file does not support seeking to the beginning
-// of the data (ie, it is a stream of some kind), then we log a fatal
-// error.
+// Strings returns all of the remaining data in our underlying file as an
+// array of strings, one line per array entry.
 func (d *TextFile) Strings() []string {
-	// make sure we are at the start of the file
-	rewindErr := d.MustRewind()
-
-	// because we guarantee that Strings() always returns all of the
-	// data in the file, we cannot continue if the Rewind operation
-	// failed for any reason
-	if rewindErr != nil {
-		// this return statement will only be reachable inside
-		// our unit tests
-		return []string{}
-	}
-
 	retval := []string{}
 	for line := range d.ReadLines() {
 		retval = append(retval, line)
@@ -187,12 +137,8 @@ func (d *TextFile) Strings() []string {
 	return retval
 }
 
-// TrimmedString returns all of the data in our underlying file as a string,
-// with any leading or trailing whitespace removed.
-//
-// If the underlying file does not support seeking to the beginning
-// of the data (ie, it is a stream of some kind), then we log a fatal
-// error.
+// TrimmedString returns all of the remaining data in our underlying file
+// as a string, with any leading or trailing whitespace removed.
 func (d *TextFile) TrimmedString() string {
 	return strings.TrimSpace(d.String())
 }

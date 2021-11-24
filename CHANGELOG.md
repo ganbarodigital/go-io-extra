@@ -6,6 +6,9 @@
 
 * TextBuffer
   - TextBuffer.String() now returns only the remaining data (ie, non-read data)
+* TextFile
+  - TextFile now acts like a stream, no longer auto-rewinds on any reads
+    - You can use `TextFile.Rewind()` if you *need* it to rewind for any reason
 
 ## v2.1.0
 

@@ -45,26 +45,26 @@ type TextReader interface {
 	// Golang io ecosystem
 	io.Reader
 
-	// ParseInt returns the data in this input source as an integer.
+	// ParseInt returns the remaining data in this input source as an integer.
 	//
 	// If the input source contains anything other than a valid number, an
 	// error is returned.
 	ParseInt() (int, error)
 
 	// ReadLines returns a channel that you can `range` over to get each
-	// line from this input source.
+	// remaining line from this input source.
 	ReadLines() <-chan string
 
 	// ReadWords returns a channel that you can `range` over to get each
-	// word from this input source.
+	// remaining word from this input source.
 	ReadWords() <-chan string
 
-	// String returns all of the data in this input source as a single
-	// (possibly multi-line) string.
+	// String returns all of the remaining data in this input source as a
+	// single (possibly multi-line) string.
 	String() string
 
-	// Strings returns all of the data in this input source as an array of
-	// strings, one line per array entry.
+	// Strings returns all of the remaining data in this input source as an
+	// array of strings, one line per array entry.
 	Strings() []string
 
 	// String returns all of the data in this input source as a single

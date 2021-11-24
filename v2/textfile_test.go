@@ -319,7 +319,7 @@ func TestTextFileReadLinesIteratesOverUnderlyingFile(t *testing.T) {
 	assert.Equal(t, expectedResult, actualResult)
 }
 
-func TestTextFileReadLinesAlwaysReturnsEntireFileIfRewindSupported(t *testing.T) {
+func TestTextFileReadLinesActsLikeStream(t *testing.T) {
 	t.Parallel()
 
 	// ----------------------------------------------------------------
@@ -341,8 +341,8 @@ func TestTextFileReadLinesAlwaysReturnsEntireFileIfRewindSupported(t *testing.T)
 		actualResult = append(actualResult, line)
 	}
 
-	// this second read proves that ReadLines() always starts
-	// from the beginning of the file
+	// this second read proves that ReadLines() acts like a stream,
+	// and does not rewind to the beginning of the file
 	secondResult := []string{}
 	for line := range unit.ReadLines() {
 		secondResult = append(secondResult, line)
@@ -352,7 +352,7 @@ func TestTextFileReadLinesAlwaysReturnsEntireFileIfRewindSupported(t *testing.T)
 	// test the results
 
 	assert.Equal(t, expectedResult, actualResult)
-	assert.Equal(t, expectedResult, secondResult)
+	assert.Empty(t, secondResult)
 }
 
 func TestTextFileReadWordsIteratesOverTheUnderlyingFile(t *testing.T) {
@@ -382,7 +382,7 @@ func TestTextFileReadWordsIteratesOverTheUnderlyingFile(t *testing.T) {
 	assert.Equal(t, expectedResult, actualResult)
 }
 
-func TestTextFileReadWordsReturnsEntireFileIfRewindSupported(t *testing.T) {
+func TestTextFileReadWordsActsLikeAStream(t *testing.T) {
 	t.Parallel()
 
 	// ----------------------------------------------------------------
@@ -404,8 +404,8 @@ func TestTextFileReadWordsReturnsEntireFileIfRewindSupported(t *testing.T) {
 		actualResult = append(actualResult, word)
 	}
 
-	// this second read proves that ReadWords() always starts at
-	// the beginning of the file
+	// this second read proves that ReadWords() acts like a stream,
+	// and does not rewind to the beginning of the file
 	var secondResult []string
 	for word := range unit.ReadWords() {
 		secondResult = append(secondResult, word)
@@ -415,7 +415,7 @@ func TestTextFileReadWordsReturnsEntireFileIfRewindSupported(t *testing.T) {
 	// test the results
 
 	assert.Equal(t, expectedResult, actualResult)
-	assert.Equal(t, expectedResult, secondResult)
+	assert.Empty(t, secondResult)
 }
 
 func TestTextFileStringReturnsTheUnderlyingFile(t *testing.T) {
@@ -442,7 +442,7 @@ func TestTextFileStringReturnsTheUnderlyingFile(t *testing.T) {
 	assert.Equal(t, expectedOutput, actualOutput)
 }
 
-func TestTextFileStringAlwaysReturnsTheEntireFile(t *testing.T) {
+func TestTextFileStringActsLikeAStream(t *testing.T) {
 	t.Parallel()
 
 	// ----------------------------------------------------------------
@@ -461,47 +461,15 @@ func TestTextFileStringAlwaysReturnsTheEntireFile(t *testing.T) {
 	// this first read moves us to the end of the file
 	actualOutput := unit.String()
 
-	// this second read proves that String() always starts from
-	// the beginning of the file
+	// this second read proves that String() acts like a stream, and
+	// does not rewind to the beginning of the file
 	secondOutput := unit.String()
 
 	// ----------------------------------------------------------------
 	// test the results
 
 	assert.Equal(t, expectedOutput, actualOutput)
-	assert.Equal(t, expectedOutput, secondOutput)
-}
-
-func TestTextFileStringCallsLogFatalfIfRewindFails(t *testing.T) {
-	t.Parallel()
-
-	// ----------------------------------------------------------------
-	// setup your test
-
-	testData := "hello world\nhave a nice day"
-	unit := NewTextFile(
-		createTestFile(testData),
-	)
-	unit.Close()
-
-	// we need to swap in a temporary logFatalf, so that we can see
-	// whether or not String behaved as expected
-	logFatalfCalled := false
-	origLogFatalf := LogFatalf
-	defer func() { LogFatalf = origLogFatalf }()
-	LogFatalf = func(format string, v ...interface{}) {
-		logFatalfCalled = true
-	}
-
-	// ----------------------------------------------------------------
-	// perform the change
-
-	_ = unit.String()
-
-	// ----------------------------------------------------------------
-	// test the results
-
-	assert.True(t, logFatalfCalled)
+	assert.Empty(t, secondOutput)
 }
 
 func TestTextFileStringsReturnsTheUnderlyingFile(t *testing.T) {
@@ -528,7 +496,7 @@ func TestTextFileStringsReturnsTheUnderlyingFile(t *testing.T) {
 	assert.Equal(t, expectedOutput, actualOutput)
 }
 
-func TestTextFileStringsAlwaysReturnsTheEntireFile(t *testing.T) {
+func TestTextFileStringsActsLikeAStream(t *testing.T) {
 	t.Parallel()
 
 	// ----------------------------------------------------------------
@@ -547,47 +515,15 @@ func TestTextFileStringsAlwaysReturnsTheEntireFile(t *testing.T) {
 	// this first read moves us to the end of the file
 	actualOutput := unit.Strings()
 
-	// this second read proves that Strings() always starts from the
-	// beginning of the file
+	// this second read proves that Strings() acts like a stream, and
+	// does not rewind to the beginning of the file
 	secondOutput := unit.Strings()
 
 	// ----------------------------------------------------------------
 	// test the results
 
 	assert.Equal(t, expectedOutput, actualOutput)
-	assert.Equal(t, expectedOutput, secondOutput)
-}
-
-func TestTextFileStringsCallsLogFatalfIfRewindFails(t *testing.T) {
-	t.Parallel()
-
-	// ----------------------------------------------------------------
-	// setup your test
-
-	testData := "hello world\nhave a nice day"
-	unit := NewTextFile(
-		createTestFile(testData),
-	)
-	unit.Close()
-
-	// we need to swap in a temporary logFatalf, so that we can see
-	// whether or not Strings behaved as expected
-	logFatalfCalled := false
-	origLogFatalf := LogFatalf
-	defer func() { LogFatalf = origLogFatalf }()
-	LogFatalf = func(format string, v ...interface{}) {
-		logFatalfCalled = true
-	}
-
-	// ----------------------------------------------------------------
-	// perform the change
-
-	_ = unit.Strings()
-
-	// ----------------------------------------------------------------
-	// test the results
-
-	assert.True(t, logFatalfCalled)
+	assert.Empty(t, secondOutput)
 }
 
 func TestTextFileTrimmedStringReturnsUnderlyingFileWithWhitespaceRemoved(t *testing.T) {
@@ -613,38 +549,6 @@ func TestTextFileTrimmedStringReturnsUnderlyingFileWithWhitespaceRemoved(t *test
 	// test the results
 
 	assert.Equal(t, expectedOutput, actualOutput)
-}
-
-func TestTextFileTrimmedStringCallsLogFatalfIfRewindFails(t *testing.T) {
-	t.Parallel()
-
-	// ----------------------------------------------------------------
-	// setup your test
-
-	testData := " hello world\nhave a nice day\n "
-	unit := NewTextFile(
-		createTestFile(testData),
-	)
-	unit.Close()
-
-	// we need to swap in a temporary logFatalf, so that we can see
-	// whether or not Strings behaved as expected
-	logFatalfCalled := false
-	origLogFatalf := LogFatalf
-	defer func() { LogFatalf = origLogFatalf }()
-	LogFatalf = func(format string, v ...interface{}) {
-		logFatalfCalled = true
-	}
-
-	// ----------------------------------------------------------------
-	// perform the change
-
-	_ = unit.TrimmedString()
-
-	// ----------------------------------------------------------------
-	// test the results
-
-	assert.True(t, logFatalfCalled)
 }
 
 // ================================================================
@@ -674,6 +578,7 @@ func TestTextFileWriteWritesToTheUnderlyingFile(t *testing.T) {
 	// ----------------------------------------------------------------
 	// test the results
 
+	unit.Rewind()
 	actualResult := unit.String()
 
 	assert.Equal(t, expectedResult, actualResult)
@@ -700,6 +605,7 @@ func TestTextFileWriteRuneWritesToTheUnderlyingFile(t *testing.T) {
 	// ----------------------------------------------------------------
 	// test the results
 
+	unit.Rewind()
 	actualResult := unit.String()
 
 	assert.Equal(t, expectedResult, actualResult)
@@ -726,6 +632,7 @@ func TestTextFileWriteStringWritesToTheUnderlyingFile(t *testing.T) {
 	// ----------------------------------------------------------------
 	// test the results
 
+	unit.Rewind()
 	actualResult := unit.String()
 
 	assert.Equal(t, expectedResult, actualResult)
