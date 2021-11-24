@@ -41,3 +41,5 @@ Click on the version number, to see the README for each package version.
 Version            | Status | End-of-Support Date
 -------------------|--------|--------------------
 [v2](v2/README.md) | Latest | none set
+
+v2.0.0 is the first release, because Golang's `go get` does not support packages in sub-folders called `v1`.
