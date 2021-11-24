@@ -2,6 +2,10 @@
 
 ## develop
 
+## v2.1.1
+
+Released Wednesday, 24th November 2021.
+
 ### Fixes
 
 * TextBuffer
