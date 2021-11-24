@@ -625,6 +625,7 @@ func TestTextFileTrimmedStringCallsLogFatalfIfRewindFails(t *testing.T) {
 	unit := NewTextFile(
 		createTestFile(testData),
 	)
+	unit.Close()
 
 	// we need to swap in a temporary logFatalf, so that we can see
 	// whether or not Strings behaved as expected
