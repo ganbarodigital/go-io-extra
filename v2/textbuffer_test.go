@@ -336,6 +336,30 @@ func TestTextBufferStringsReturnsBuffer(t *testing.T) {
 	assert.Equal(t, expectedOutput, actualOutput)
 }
 
+func TestTextBufferStringsEmptiesTheBufferBuffer(t *testing.T) {
+	t.Parallel()
+
+	// ----------------------------------------------------------------
+	// setup your test
+
+	unit := NewTextBuffer()
+	unit.WriteString("hello world\nhave a nice day\n")
+
+	expectedOutput := []string{"hello world", "have a nice day"}
+
+	// ----------------------------------------------------------------
+	// perform the change
+
+	actualOutput := unit.Strings()
+	secondOutput := unit.String()
+
+	// ----------------------------------------------------------------
+	// test the results
+
+	assert.Equal(t, expectedOutput, actualOutput)
+	assert.Empty(t, secondOutput)
+}
+
 func TestTextBufferTrimmedStringReturnsBufferWithWhitespaceRemoved(t *testing.T) {
 	t.Parallel()
 
