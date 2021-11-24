@@ -5,3 +5,4 @@
 ### New
 
 * Added `TextInput`
+* Added `TextOutput`
