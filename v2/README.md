@@ -35,16 +35,17 @@ Struct       | Purpose
 
 ### Utilities
 
-Utility            | Purpose
--------------------|--------
-`NewTextScanner()` | Creates a text-oriented input channel.
-`ParseInt()`       | Returns the next line from the input channel as an int.
-`ReadLine()`       | Returns the next line from the input channel, as a string.
-`ReadLines()`      | Returns the remaining text from the input channel, one line at a time.
-`ReadWords()`      | Returns the remaining text from the input channel, one word at a time.
-`String()`         | Returns the remaining text from the input channel, as a string.
-`Strings()`        | Returns the remaining text from the input channel, as an array of strings.
-`TrimmedString()`  | Returns the remaining text from the input channel, as a string with leading/trailing whitespace removed.
-`WriteRune()`      | Writes a unicode character to the output channel.
-`WriteString()`    | Writes the given string to the output channel.
-`LogFatalf`        | How this package logs fatal errors.
+Utility                | Purpose
+-----------------------|--------
+`NewTextScanner()`     | Creates a text-oriented input channel.
+`NopReadWriteCloser()` | Adds io.Closer compatibility to an io.ReadWriter
+`ParseInt()`           | Returns the next line from the input channel as an int.
+`ReadLine()`           | Returns the next line from the input channel, as a string.
+`ReadLines()`          | Returns the remaining text from the input channel, one line at a time.
+`ReadWords()`          | Returns the remaining text from the input channel, one word at a time.
+`String()`             | Returns the remaining text from the input channel, as a string.
+`Strings()`            | Returns the remaining text from the input channel, as an array of strings.
+`TrimmedString()`      | Returns the remaining text from the input channel, as a string with leading/trailing whitespace removed.
+`WriteRune()`          | Writes a unicode character to the output channel.
+`WriteString()`        | Writes the given string to the output channel.
+`LogFatalf`            | How this package logs fatal errors.

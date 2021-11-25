@@ -12,6 +12,7 @@
 * Added `StringsReader` interface
 * Added `TrimmedStringReader` interface
 * Added `WordsReader` interface
+* Added `NopReadWriteCloser()`
 * Added `ParseInt()`
 * Added `ReadLine()`
 * Added `ReadLines()`
