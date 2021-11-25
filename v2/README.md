@@ -15,7 +15,7 @@ Interface          | Purpose
 `TextWriter`       | Represents a text-oriented output source, such as stdout / stderr.
 `TextReaderWriter` | Represents a text-oriented input & output source.
 
-###
+### Structs
 
 Struct       | Purpose
 -------------|--------
@@ -29,4 +29,5 @@ Struct       | Purpose
 Utility            | Purpose
 -------------------|--------
 `NewTextScanner()` | Creates a text-oriented input channel.
+`ParseInt()`       | Returns the next line from the input channel as an int.
 `LogFatalf`        | How this package logs fatal errors.

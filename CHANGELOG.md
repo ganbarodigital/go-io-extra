@@ -4,9 +4,10 @@
 
 ### New
 
-* Added `DevNull`
-* Added `DevZero`
-* added `closed` flag
+* Added `DevNull` struct
+* Added `DevZero` struct
+* Added `ParseInt()`
+* Added `closed` flag
 
 ## v2.1.1
 
