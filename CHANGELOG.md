@@ -7,6 +7,7 @@
 * Added `DevNull` struct
 * Added `DevZero` struct
 * Added `ParseInt()`
+* Added `ReadLine()`
 * Added `closed` flag
 
 ## v2.1.1
