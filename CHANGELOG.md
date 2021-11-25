@@ -13,6 +13,7 @@
 * Added `ParseInt()`
 * Added `ReadLine()`
 * Added `ReadLines()`
+* Added `ReadWords()`
 * Added `closed` flag
 
 ## v2.1.1
