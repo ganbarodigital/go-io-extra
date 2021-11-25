@@ -20,6 +20,7 @@
 * Added `Strings()`
 * Added `TrimmedString()`
 * Added `WriteRune()`
+* Added `WriteString()`
 * Added `closed` flag
 
 ## v2.1.1
