@@ -39,6 +39,6 @@ import "strings"
 // TrimmedString returns all of the remaining data in our underlying
 // input source as a string, with any leading or trailing whitespace
 // removed.
-func TrimmedString(input TextReader) string {
+func TrimmedString(input StringReader) string {
 	return strings.TrimSpace(input.String())
 }
