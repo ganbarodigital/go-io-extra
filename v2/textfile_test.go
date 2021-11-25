@@ -578,6 +578,9 @@ func TestTextFileWriteWritesToTheUnderlyingFile(t *testing.T) {
 	// ----------------------------------------------------------------
 	// test the results
 
+	// files don't have separate read and write offsets, so we have
+	// to rewind to the beginning so that we can read what we've
+	// just written
 	unit.Rewind()
 	actualResult := unit.String()
 
@@ -605,6 +608,9 @@ func TestTextFileWriteRuneWritesToTheUnderlyingFile(t *testing.T) {
 	// ----------------------------------------------------------------
 	// test the results
 
+	// files don't have separate read and write offsets, so we have
+	// to rewind to the beginning so that we can read what we've
+	// just written
 	unit.Rewind()
 	actualResult := unit.String()
 
@@ -632,6 +638,9 @@ func TestTextFileWriteStringWritesToTheUnderlyingFile(t *testing.T) {
 	// ----------------------------------------------------------------
 	// test the results
 
+	// files don't have separate read and write offsets, so we have
+	// to rewind to the beginning so that we can read what we've
+	// just written
 	unit.Rewind()
 	actualResult := unit.String()
 

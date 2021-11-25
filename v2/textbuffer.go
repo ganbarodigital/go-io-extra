@@ -35,11 +35,7 @@
 package ioextra
 
 import (
-	"bufio"
 	"bytes"
-	"io/ioutil"
-	"strconv"
-	"strings"
 )
 
 // TextBuffer is a bytes.Buffer with full TextReader / TextWriter support.
@@ -73,41 +69,40 @@ func NewTextBuffer() *TextBuffer {
 // If the buffer contains anything other than a valid number, an error
 // is returned.
 func (d *TextBuffer) ParseInt() (int, error) {
-	text := d.TrimmedString()
-	return strconv.Atoi(text)
+	return ParseInt(d)
+}
+
+// ReadLine returns the next line of data from our buffer, or an error
+// if a problem was encountered.
+func (d *TextBuffer) ReadLine() (string, error) {
+	return ReadLine(d)
 }
 
 // ReadLines returns a channel that you can `range` over to get each
 // line from our buffer
 func (d *TextBuffer) ReadLines() <-chan string {
-	return NewTextScanner(d, bufio.ScanLines)
+	return ReadLines(d)
 }
 
 // ReadWords returns a channel that you can `range` over to get each
 // word from our buffer
 func (d *TextBuffer) ReadWords() <-chan string {
-	return NewTextScanner(d, bufio.ScanWords)
+	return ReadWords(d)
 }
 
 // String returns all the remaining data in our buffer as a single string.
 func (d *TextBuffer) String() string {
-	data, _ := ioutil.ReadAll(d)
-	return string(data)
+	return String(d)
 }
 
 // Strings returns all of the data in our buffer as an array of
 // strings, one line per array entry
 func (d *TextBuffer) Strings() []string {
-	retval := []string{}
-	for line := range d.ReadLines() {
-		retval = append(retval, line)
-	}
-
-	return retval
+	return Strings(d)
 }
 
 // TrimmedString returns all of the data in our buffer as a string,
 // with any leading or trailing whitespace removed.
 func (d *TextBuffer) TrimmedString() string {
-	return strings.TrimSpace(d.String())
+	return TrimmedString(d)
 }

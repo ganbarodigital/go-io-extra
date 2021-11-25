@@ -35,11 +35,7 @@
 package ioextra
 
 import (
-	"bufio"
-	"io/ioutil"
 	"os"
-	"strconv"
-	"strings"
 )
 
 // TextFile is an os.File with TextReader and TextWriter compatibility.
@@ -99,48 +95,43 @@ func (d *TextFile) MustRewind() error {
 // If the file contains anything other than a valid number, an error
 // is returned.
 func (d *TextFile) ParseInt() (int, error) {
-	text := d.TrimmedString()
-	return strconv.Atoi(text)
+	return ParseInt(d)
+}
+
+// ReadLine returns the next line of data in our underlying file, or an
+// error if a problem was encountered.
+func (d *TextFile) ReadLine() (string, error) {
+	return ReadLine(d)
 }
 
 // ReadLines returns a channel that you can `range` over to get each
 // remaining line from our underlying file.
 func (d *TextFile) ReadLines() <-chan string {
-	return NewTextScanner(d, bufio.ScanLines)
+	return ReadLines(d)
 }
 
 // ReadWords returns a channel that you can `range` over to get each
 // remaining word from our underlying file.
 func (d *TextFile) ReadWords() <-chan string {
-	return NewTextScanner(d, bufio.ScanWords)
+	return ReadWords(d)
 }
 
 // String returns all of the remaining data in our underlying file as a
 // single (possibly multi-line) string.
 func (d *TextFile) String() string {
-	retval, err := ioutil.ReadAll(d)
-	if err != nil {
-		return ""
-	}
-
-	return string(retval)
+	return String(d)
 }
 
 // Strings returns all of the remaining data in our underlying file as an
 // array of strings, one line per array entry.
 func (d *TextFile) Strings() []string {
-	retval := []string{}
-	for line := range d.ReadLines() {
-		retval = append(retval, line)
-	}
-
-	return retval
+	return Strings(d)
 }
 
 // TrimmedString returns all of the remaining data in our underlying file
 // as a string, with any leading or trailing whitespace removed.
 func (d *TextFile) TrimmedString() string {
-	return strings.TrimSpace(d.String())
+	return TrimmedString(d)
 }
 
 // ===========================================================================
@@ -156,5 +147,5 @@ func (d *TextFile) TrimmedString() string {
 // file. It returns the number of types written, and any error encountered
 // that caused the write to file.
 func (d *TextFile) WriteRune(r rune) (int, error) {
-	return d.WriteString(string(r))
+	return WriteRune(d, r)
 }
