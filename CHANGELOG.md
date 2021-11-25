@@ -9,6 +9,7 @@
 * Added `LineReader` interface
 * Added `LinesReader` interface
 * Added `StringReader` interface
+* Added `StringsReader` interface
 * Added `WordsReader` interface
 * Added `ParseInt()`
 * Added `ReadLine()`
