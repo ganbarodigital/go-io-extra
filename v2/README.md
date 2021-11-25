@@ -26,12 +26,13 @@ Write Interface    | Purpose
 
 ### Structs
 
-Struct       | Purpose
--------------|--------
-`DevNull`    | An io.ReadWriteCloser that emulates UNIX /dev/null behaviour.
-`DevZero`    | An io.ReadWriteCloser that emulates UNIX /dev/zero behaviour.
-`TextBuffer` | A bytes.Buffer with full `TextReader` and `TextWriter` support.
-`TextFile`   | An os.File with full `TextReader` and `TextWriter` support.
+Struct          | Purpose
+----------------|--------
+`DevNull`       | An io.ReadWriteCloser that emulates UNIX /dev/null behaviour.
+`DevZero`       | An io.ReadWriteCloser that emulates UNIX /dev/zero behaviour.
+`TextBuffer`    | A bytes.Buffer with full `TextReader` and `TextWriter` support.
+`TextFile`      | An os.File with full `TextReader` and `TextWriter` support.
+`TextIOWrapper` | An io.ReadWriteCloser with full `TextReader` and `TextWriter` support.
 
 ### Utilities
 

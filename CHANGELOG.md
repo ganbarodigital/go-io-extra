@@ -4,14 +4,15 @@
 
 ### New
 
-* Added `DevNull` struct
-* Added `DevZero` struct
 * Added `LineReader` interface
 * Added `LinesReader` interface
 * Added `StringReader` interface
 * Added `StringsReader` interface
 * Added `TrimmedStringReader` interface
 * Added `WordsReader` interface
+* Added `DevNull` struct
+* Added `DevZero` struct
+* Added `TextIOWrapper` struct
 * Added `NopReadWriteCloser()`
 * Added `ParseInt()`
 * Added `ReadLine()`
