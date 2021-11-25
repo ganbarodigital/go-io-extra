@@ -6,6 +6,7 @@
 
 * Added `DevNull` struct
 * Added `DevZero` struct
+* Added `LineReader` interface
 * Added `ParseInt()`
 * Added `ReadLine()`
 * Added `closed` flag

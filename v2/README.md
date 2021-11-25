@@ -10,6 +10,7 @@ _ioextra_ is a package that adds helpful Golang io interfaces, structs and utili
 
 Interface          | Purpose
 -------------------|---------
+`LineReader`       | Represents an input source that has the ReadLine() function.
 `RuneWriter`       | Represents an output source that accepts unicode characters.
 `TextReader`       | Represents a text-oriented input source, such as stdin.
 `TextWriter`       | Represents a text-oriented output source, such as stdout / stderr.
