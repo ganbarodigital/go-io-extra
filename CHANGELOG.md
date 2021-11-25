@@ -17,6 +17,7 @@
 * Added `ReadLines()`
 * Added `ReadWords()`
 * Added `String()`
+* Added `Strings()`
 * Added `closed` flag
 
 ## v2.1.1

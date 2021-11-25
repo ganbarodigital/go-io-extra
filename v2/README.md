@@ -43,4 +43,5 @@ Utility            | Purpose
 `ReadLines()`      | Returns the remaining text from the input channel, one line at a time.
 `ReadWords()`      | Returns the remaining text from the input channel, one word at a time.
 `String()`         | Returns the remaining text from the input channel, as a string.
+`Strings()`        | Returns the remaining text from the input channel, as an array of strings.
 `LogFatalf`        | How this package logs fatal errors.
