@@ -18,6 +18,7 @@
 * Added `ReadWords()`
 * Added `String()`
 * Added `Strings()`
+* Added `TrimmedString()`
 * Added `closed` flag
 
 ## v2.1.1

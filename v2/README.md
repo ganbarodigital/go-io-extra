@@ -44,4 +44,5 @@ Utility            | Purpose
 `ReadWords()`      | Returns the remaining text from the input channel, one word at a time.
 `String()`         | Returns the remaining text from the input channel, as a string.
 `Strings()`        | Returns the remaining text from the input channel, as an array of strings.
+`TrimmedString()`  | Returns the remaining text from the input channel, as a string with leading/trailing whitespace removed.
 `LogFatalf`        | How this package logs fatal errors.
