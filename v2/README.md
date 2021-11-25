@@ -33,4 +33,5 @@ Utility            | Purpose
 `NewTextScanner()` | Creates a text-oriented input channel.
 `ParseInt()`       | Returns the next line from the input channel as an int.
 `ReadLine()`       | Returns the next line from the input channel, as a string.
+`ReadLines()`      | Returns the remaining text from the input channel as strings.
 `LogFatalf`        | How this package logs fatal errors.

@@ -10,6 +10,7 @@
 * Added `LinesReader` interface
 * Added `ParseInt()`
 * Added `ReadLine()`
+* Added `ReadLines()`
 * Added `closed` flag
 
 ## v2.1.1
