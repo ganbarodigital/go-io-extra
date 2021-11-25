@@ -13,6 +13,7 @@ Interface          | Purpose
 `LineReader`       | Represents an input source that has the ReadLine() function.
 `LinesReader`      | Represents an input source that has the ReadLines() function.
 `RuneWriter`       | Represents an output source that accepts unicode characters.
+`StringReader`     | Represents an input source that has the String() function.
 `TextReader`       | Represents a text-oriented input source, such as stdin.
 `TextWriter`       | Represents a text-oriented output source, such as stdout / stderr.
 `TextReaderWriter` | Represents a text-oriented input & output source.

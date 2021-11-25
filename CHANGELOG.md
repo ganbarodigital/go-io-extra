@@ -8,6 +8,7 @@
 * Added `DevZero` struct
 * Added `LineReader` interface
 * Added `LinesReader` interface
+* Added `StringReader` interface
 * Added `WordsReader` interface
 * Added `ParseInt()`
 * Added `ReadLine()`
