@@ -12,6 +12,7 @@
 * Added `WordsReader` interface
 * Added `DevNull` struct
 * Added `DevZero` struct
+* Added `TextDevNull` struct
 * Added `TextIOWrapper` struct
 * Added `NopReadWriteCloser()`
 * Added `ParseInt()`
