@@ -16,6 +16,7 @@ Interface          | Purpose
 `TextReader`       | Represents a text-oriented input source, such as stdin.
 `TextWriter`       | Represents a text-oriented output source, such as stdout / stderr.
 `TextReaderWriter` | Represents a text-oriented input & output source.
+`WordsReader`      | Represents an input source that has the ReadWords() function.
 
 ### Structs
 
