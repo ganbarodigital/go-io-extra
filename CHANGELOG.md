@@ -2,6 +2,10 @@
 
 ## develop
 
+## v2.2.0
+
+Released Thursday, 25th November 2021.
+
 ### F/C Breaks
 
 * Added `TextReader.ReadLine()`
