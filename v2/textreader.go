@@ -51,6 +51,10 @@ type TextReader interface {
 	// error is returned.
 	ParseInt() (int, error)
 
+	// ReadLine returns the next line of data from this input source, or
+	// an error if that wasn't possible.
+	ReadLine() (string, error)
+
 	// ReadLines returns a channel that you can `range` over to get each
 	// remaining line from this input source.
 	ReadLines() <-chan string
@@ -67,7 +71,7 @@ type TextReader interface {
 	// array of strings, one line per array entry.
 	Strings() []string
 
-	// String returns all of the data in this input source as a single
+	// TrimmedString returns all of the data in this input source as a single
 	// (possibly multi-line) string. Any leading and trailing whitespace
 	// is removed.
 	TrimmedString() string

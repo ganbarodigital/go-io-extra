@@ -2,6 +2,11 @@
 
 ## develop
 
+### F/C Breaks
+
+* Added `TextReader.ReadLine()`
+  - if you implement TextReader, you'll need to add this to your structs
+
 ### New
 
 * Added `LineReader` interface
